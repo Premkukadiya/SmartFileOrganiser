@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart File Organizer Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15));
+            border-radius: 20px;
+            border: 1px solid rgba(99,102,241,0.2);
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00ffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .header .subtitle { color: #94a3b8; font-size: 0.95rem; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: rgba(30,30,60,0.6);
+            border: 1px solid rgba(99,102,241,0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00ffff;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .section {
+            background: rgba(20,20,45,0.5);
+            border: 1px solid rgba(99,102,241,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: #c4b5fd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            padding: 0.8rem 1rem;
+            background: rgba(99,102,241,0.1);
+            color: #a5b4fc;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        th:first-child { border-radius: 8px 0 0 8px; }
+        th:last-child { border-radius: 0 8px 8px 0; }
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(99,102,241,0.08);
+            font-size: 0.9rem;
+        }
+        tr:hover td { background: rgba(99,102,241,0.05); }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: white;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.7rem;
+            gap: 1rem;
+        }
+        .bar-label {
+            min-width: 100px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+        .bar-track {
+            flex: 1;
+            height: 24px;
+            background: rgba(30,30,60,0.8);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.6s ease;
+            min-width: 4px;
+        }
+        .bar-value {
+            min-width: 40px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📁 Smart File Organizer</h1>
+            <p class="subtitle">Analysis Report • August 07, 2026 at 10:16 PM</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">36</div>
+                <div class="stat-label">Total Files</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">3.67 MB</div>
+                <div class="stat-label">Total Size</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Categories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">13</div>
+                <div class="stat-label">Extensions</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Category Breakdown</h2>
+            <table>
+                <thead>
+                    <tr><th>Category</th><th>Count</th><th>Size</th><th>Share</th></tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td><span class="badge" style="background:#22c55e">Code</span></td>
+                <td>13</td>
+                <td>76.54 KB</td>
+                <td>36.1%</td>
+            </tr>
+            <tr>
+                <td><span class="badge" style="background:#6b7280">Other</span></td>
+                <td>12</td>
+                <td>1.69 MB</td>
+                <td>33.3%</td>
+            </tr>
+            <tr>
+                <td><span class="badge" style="background:#f59e0b">Archives</span></td>
+                <td>6</td>
+                <td>1.14 MB</td>
+                <td>16.7%</td>
+            </tr>
+            <tr>
+                <td><span class="badge" style="background:#06b6d4">Data</span></td>
+                <td>3</td>
+                <td>646.42 KB</td>
+                <td>8.3%</td>
+            </tr>
+            <tr>
+                <td><span class="badge" style="background:#3b82f6">Documents</span></td>
+                <td>2</td>
+                <td>139.56 KB</td>
+                <td>5.6%</td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📈 Distribution Chart</h2>
+            
+            <div class="bar-row">
+                <span class="bar-label">Code</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:100%;background:#22c55e"></div>
+                </div>
+                <span class="bar-value">13</span>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Other</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:92%;background:#6b7280"></div>
+                </div>
+                <span class="bar-value">12</span>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Archives</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:46%;background:#f59e0b"></div>
+                </div>
+                <span class="bar-value">6</span>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Data</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:23%;background:#06b6d4"></div>
+                </div>
+                <span class="bar-value">3</span>
+            </div>
+            <div class="bar-row">
+                <span class="bar-label">Documents</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:15%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">2</span>
+            </div>
+        </div>
+
+        
+        
+        <div class="section">
+            <h2>📋 File Metadata</h2>
+            <table>
+                <thead><tr><th>File</th><th>Type</th><th>Size</th><th>Details</th></tr></thead>
+                <tbody>
+                <tr>
+                    <td>NeonDrift_PRD.md.pdf</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>139.35 KB</td>
+                    <td>Lines: 4861, Words: 10096</td>
+                </tr>
+                <tr>
+                    <td>package-lock.json</td>
+                    <td><span class="badge" style="background:#6366f1">unknown</span></td>
+                    <td>81 B</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>requirements.txt</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>214 B</td>
+                    <td>Lines: 11, Words: 11</td>
+                </tr>
+                <tr>
+                    <td>simulate.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>17.19 KB</td>
+                    <td>Lines: 424, Words: 1668</td>
+                </tr>
+                <tr>
+                    <td>neondrift_env.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>24.62 KB</td>
+                    <td>Lines: 586, Words: 2572</td>
+                </tr>
+                <tr>
+                    <td>__init__.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>281 B</td>
+                    <td>Lines: 10, Words: 31</td>
+                </tr>
+                <tr>
+                    <td>package-lock.json</td>
+                    <td><span class="badge" style="background:#6366f1">unknown</span></td>
+                    <td>645.79 KB</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>package.json</td>
+                    <td><span class="badge" style="background:#6366f1">unknown</span></td>
+                    <td>563 B</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>model_loader.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>4.42 KB</td>
+                    <td>Lines: 129, Words: 422</td>
+                </tr>
+                <tr>
+                    <td>server.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>6.74 KB</td>
+                    <td>Lines: 188, Words: 594</td>
+                </tr>
+                <tr>
+                    <td>compare_algorithms.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>10.81 KB</td>
+                    <td>Lines: 303, Words: 979</td>
+                </tr>
+                <tr>
+                    <td>tempCodeRunnerFile.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>17 B</td>
+                    <td>Lines: 1, Words: 1</td>
+                </tr>
+                <tr>
+                    <td>train_a2c.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>5.06 KB</td>
+                    <td>Lines: 130, Words: 469</td>
+                </tr>
+                <tr>
+                    <td>train_dqn.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>2.72 KB</td>
+                    <td>Lines: 85, Words: 237</td>
+                </tr>
+                <tr>
+                    <td>train_ppo.py</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>2.66 KB</td>
+                    <td>Lines: 85, Words: 239</td>
+                </tr>
+                <tr>
+                    <td>index.html</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>556 B</td>
+                    <td>Lines: 17, Words: 59</td>
+                </tr>
+                <tr>
+                    <td>index.js</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>232 B</td>
+                    <td>Lines: 10, Words: 22</td>
+                </tr>
+                <tr>
+                    <td>useSocket.js</td>
+                    <td><span class="badge" style="background:#6366f1">text</span></td>
+                    <td>1.26 KB</td>
+                    <td>Lines: 43, Words: 157</td>
+                </tr></tbody>
+            </table>
+        </div>
+        
+
+        <div class="footer">
+            Generated by Smart File Organizer v1.0.0 • August 07, 2026 at 10:16 PM
+        </div>
+    </div>
+</body>
+</html>

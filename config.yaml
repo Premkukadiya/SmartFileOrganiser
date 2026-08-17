@@ -1,0 +1,90 @@
+# Smart File Organizer - Configuration
+# Customize categories, patterns, and behavior
+
+categories:
+  Documents:
+    - .pdf
+    - .doc
+    - .docx
+    - .txt
+    - .rtf
+    - .odt
+    - .pptx
+    - .ppt
+  Images:
+    - .jpg
+    - .jpeg
+    - .png
+    - .gif
+    - .bmp
+    - .svg
+    - .webp
+    - .tiff
+    - .ico
+  Code:
+    - .py
+    - .js
+    - .ts
+    - .html
+    - .css
+    - .java
+    - .cpp
+    - .c
+    - .h
+    - .go
+    - .rs
+    - .rb
+    - .php
+    - .sh
+    - .bat
+  Archives:
+    - .zip
+    - .tar
+    - .gz
+    - .rar
+    - .7z
+    - .bz2
+    - .xz
+  Media:
+    - .mp3
+    - .mp4
+    - .avi
+    - .mkv
+    - .wav
+    - .flac
+    - .mov
+    - .wmv
+    - .ogg
+    - .webm
+  Data:
+    - .csv
+    - .json
+    - .xml
+    - .xlsx
+    - .xls
+    - .sql
+    - .db
+    - .sqlite
+
+# Output directory for organized files
+output_directory: "Organized"
+
+# Rename pattern: {date}, {original}, {counter}
+rename_pattern: "{date}_{original}"
+
+# Directories to skip during scanning
+excluded_dirs:
+  - .git
+  - __pycache__
+  - node_modules
+  - .venv
+  - venv
+  - Organized
+  - .idea
+  - .vscode
+
+# Hash algorithm for duplicate detection: sha256 or md5
+hash_algorithm: "sha256"
+
+# Log file path
+log_file: "organizer.log"
